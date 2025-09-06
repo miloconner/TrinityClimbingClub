@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Trinity Climbing Club</title>
-    <link rel="stylesheet" href="style.css"
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="sidebar">
-        <button>Home</button>
-        <button>About</button>
-        <button>Events</button>
-        <button>Pictures</button>
-        <button>Contact</button>
-    </div>
+
+    <!-- Sidebar will load here -->
+    <div id="sidebar-container"></div>
+
+    <!-- Main content -->
     <div class="main-content">
         <h1>Welcome to Trinity Climbing Club</h1>
-        <p>
-            Time to Climb
-            <iframe src="https://calendar.google.com/calendar/embed?src=13372f795c026c2efc2e94d5d8d942d534438da2721393c8e662c7029e4c7a4f%40group.calendar.google.com&ctz=America%2FChicago" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
-        </p>
+        <p>Time to Climb!</p>
+        <iframe 
+            src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=America%2FChicago"
+            style="border:0" width="800" height="600" frameborder="0" scrolling="no">
+        </iframe>
     </div>
+
+    <!-- Load sidebar dynamically -->
+    <script>
+        fetch('sidebar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('sidebar-container').innerHTML = data;
+            })
+            .catch(err => console.error('Error loading sidebar:', err));
+    </script>
+
 </body>
 </html>
